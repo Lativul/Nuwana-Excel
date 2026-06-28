@@ -6,7 +6,6 @@ import {
   Users, 
   Settings,
   Plus,
-  Edit,
   Trash2,
   Eye,
   Upload,
@@ -125,7 +124,7 @@ const AdminDashboard: React.FC = () => {
         type: isImage ? 'image' : 'video',
         format: fileExt,
         size: fileSize,
-        duration: isImage ? undefined : '00:30',
+        duration: isImage ? '00:00' : '00:30',
         url: previewUrl,
         thumbnail: isImage ? previewUrl : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop',
         category: 'Uploads',
@@ -134,6 +133,7 @@ const AdminDashboard: React.FC = () => {
         isNew: true
       };
       
+      addMediaFile(mediaItem);
 
       return mediaItem;
     });
@@ -211,7 +211,7 @@ const AdminDashboard: React.FC = () => {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
             <img 
-              src="https://coresg-normal.trae.ai/api/ide/v1/text-to-image?prompt=NUWANA%20EXCEL%20logo%20with%20Indonesian%20wayang%20puppet%20character%20and%20Excel%20spreadsheet%20icon%2C%20elegant%20gold%20and%20green%20design&image_size=square_hd" 
+              src="/logo.png" 
               alt="Nuwana Excel Logo" 
               className="h-16 w-auto"
             />

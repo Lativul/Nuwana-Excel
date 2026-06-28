@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlayCircle, CheckCircle2 } from 'lucide-react';
+import { PlayCircle } from 'lucide-react';
 import { useData } from '../context/DataContext';
 
 const Videos: React.FC = () => {

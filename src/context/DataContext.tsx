@@ -13,9 +13,9 @@ const initialVideoCourses = [
   { id: '2', title: 'Advanced Excel Techniques', description: 'Learn pivot tables, VLOOKUP, macros, and advanced data analysis tools', category: 'Advanced Excel', thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop', duration: '5h 30m', lessons: [ { id: '2-1', title: 'Pivot Tables Deep Dive', duration: '25m', videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4' }, { id: '2-2', title: 'VLOOKUP & XLOOKUP', duration: '30m', videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4' } ], isPremium: true, published: true },
 ];
 
-const initialMedia = [
-  { id: 1, name: 'Budget Planner Thumbnail', type: 'image', format: 'JPG', size: '1.2 MB', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop', category: 'Thumbnails', alt: 'Budget Planner Template', published: true },
-  { id: 2, name: 'Homepage Hero Banner', type: 'image', format: 'PNG', size: '3.5 MB', url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop', category: 'Banners', alt: 'Hero banner showing Excel dashboard', published: true },
+const initialMedia: MediaFile[] = [
+  { id: 1, name: 'Budget Planner Thumbnail', type: 'image', format: 'JPG', size: '1.2 MB', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop', thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop', category: 'Thumbnails', alt: 'Budget Planner Template', published: true },
+  { id: 2, name: 'Homepage Hero Banner', type: 'image', format: 'PNG', size: '3.5 MB', url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop', thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop', category: 'Banners', alt: 'Hero banner showing Excel dashboard', published: true },
   { id: 3, name: 'Excel Pivot Tables Tutorial', type: 'video', format: 'MP4', size: '125 MB', duration: '15:42', url: 'https://www.w3schools.com/html/mov_bbb.mp4', thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop', category: 'Tutorials', published: true },
 ];
 

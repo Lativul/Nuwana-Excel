@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FileSpreadsheet, PlayCircle, BookOpen, Download, Clock, Star } from 'lucide-react';
+import { FileSpreadsheet, PlayCircle, BookOpen } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { templates, videos } from '../data/mockData';
 
