@@ -112,7 +112,7 @@ const AdminDashboard: React.FC = () => {
     }
 
     // Add new media to the library
-    const newMedia = selectedFiles.map((file, index) => {
+    selectedFiles.map((file, index) => {
       const isImage = file.type.startsWith('image/');
       const fileExt = file.name.split('.').pop()?.toUpperCase() || (isImage ? 'JPG' : 'MP4');
       const fileSize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
@@ -134,8 +134,6 @@ const AdminDashboard: React.FC = () => {
       };
       
       addMediaFile(mediaItem);
-
-      return mediaItem;
     });
 
     setSelectedFiles([]);
