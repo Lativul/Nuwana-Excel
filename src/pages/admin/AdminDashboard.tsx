@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { 
-  Shield, 
   FileSpreadsheet, 
   Video, 
   Image, 
@@ -15,7 +13,6 @@ import {
   Folder,
   X,
   Search,
-  Filter,
   CheckCircle2,
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
@@ -56,17 +53,15 @@ const AdminDashboard: React.FC = () => {
   });
   
   const { 
-    templates, 
-    videoCourses, 
-    mediaFiles, 
-    addMediaFile, 
-    updateMediaFile, 
+  templates,
+  videoCourses,
+  mediaFiles,
+  addMediaFile,
+  updateMediaFile,
     deleteMediaFile,
     addTemplate,
-    updateTemplate,
     deleteTemplate,
     addVideoCourse,
-    updateVideoCourse,
     deleteVideoCourse
   } = useData();
 
