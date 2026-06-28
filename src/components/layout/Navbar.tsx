@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X, Search, User, FileSpreadsheet, Video, BookOpen, Grid, LogOut, Shield } from 'lucide-react';
+import { Menu, X, Search, User, LogOut, Shield } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const Navbar: React.FC = () => {
@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
               <img 
                 src="/logo.png" 
                 alt="Nuwana Excel Logo" 
-                className="h-14 w-auto"
+                className="h-20 w-auto"
               />
             </Link>
           </div>

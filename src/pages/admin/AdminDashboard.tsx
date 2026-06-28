@@ -33,7 +33,6 @@ const AdminDashboard: React.FC = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   
-  // Form states
   const [templateForm, setTemplateForm] = useState({
     title: '',
     description: '',
@@ -140,7 +139,7 @@ const AdminDashboard: React.FC = () => {
         isNew: true
       };
       
-      addMediaFile(mediaItem);
+
       return mediaItem;
     });
 
@@ -217,7 +216,7 @@ const AdminDashboard: React.FC = () => {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
             <img 
-              src="/logo.png" 
+              src="https://coresg-normal.trae.ai/api/ide/v1/text-to-image?prompt=NUWANA%20EXCEL%20logo%20with%20Indonesian%20wayang%20puppet%20character%20and%20Excel%20spreadsheet%20icon%2C%20elegant%20gold%20and%20green%20design&image_size=square_hd" 
               alt="Nuwana Excel Logo" 
               className="h-16 w-auto"
             />
