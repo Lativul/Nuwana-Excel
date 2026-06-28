@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Download, ArrowLeft, CheckCircle, PlayCircle } from 'lucide-react';
-import { useData } from '../context/DataContext';
+import { useData } from '../hooks/useData';
 
 const TemplateDetail: React.FC = () => {
   const { id } = useParams();

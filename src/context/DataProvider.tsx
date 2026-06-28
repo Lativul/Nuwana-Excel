@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { Template, VideoCourse, MediaFile } from '../types';
+import { DataContext } from './DataContext';
 
 // Initial Mock Data
 const initialTemplates: Template[] = [
@@ -19,33 +20,6 @@ const initialMedia: MediaFile[] = [
   { id: 2, name: 'Homepage Hero Banner', type: 'image' as const, format: 'PNG', size: '3.5 MB', url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop', thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop', category: 'Banners', alt: 'Hero banner showing Excel dashboard', published: true },
   { id: 3, name: 'Excel Pivot Tables Tutorial', type: 'video' as const, format: 'MP4', size: '125 MB', duration: '15:42', url: 'https://www.w3schools.com/html/mov_bbb.mp4', thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop', category: 'Tutorials', published: true },
 ];
-
-interface DataContextType {
-  templates: Template[];
-  videoCourses: VideoCourse[];
-  mediaFiles: MediaFile[];
-  getPublishedTemplates: () => Template[];
-  getPublishedVideos: () => VideoCourse[];
-  getPublishedMedia: () => MediaFile[];
-  addMediaFile: (file: MediaFile) => void;
-  updateMediaFile: (id: number | string, updates: Partial<MediaFile>) => void;
-  deleteMediaFile: (id: number | string) => void;
-  addTemplate: (template: Template) => void;
-  updateTemplate: (id: string, updates: Partial<Template>) => void;
-  deleteTemplate: (id: string) => void;
-  addVideoCourse: (course: VideoCourse) => void;
-  updateVideoCourse: (id: string, updates: Partial<VideoCourse>) => void;
-  deleteVideoCourse: (id: string) => void;
-}
-
-const DataContext = createContext<DataContextType | undefined>(undefined);
-
-// Hook for using data context
-export const useData = () => {
-  const context = useContext(DataContext);
-  if (!context) throw new Error('useData must be used within a DataProvider');
-  return context;
-};
 
 const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [templates, setTemplates] = useState<Template[]>(initialTemplates);

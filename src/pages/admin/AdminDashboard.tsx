@@ -15,8 +15,8 @@ import {
   CheckCircle2,
   Edit,
 } from 'lucide-react';
-import { useData } from '../../context/DataProvider';
-import { MediaFile, Template, VideoCourse, VideoLesson } from '../../types';
+import { useData } from '../../hooks/useData';
+import { MediaFile, Template, VideoCourse } from '../../types';
 
 // Define proper types for our tab data
 type MainTab = {
@@ -34,6 +34,20 @@ type MediaSubTab = {
 // Define form types
 type TemplateForm = Omit<Template, 'id' | 'screenshots' | 'tutorialVideo' | 'published'>;
 type VideoForm = Omit<VideoCourse, 'id' | 'published'>;
+
+const mainTabs: MainTab[] = [
+  { id: 'templates', label: 'Templates', icon: FileSpreadsheet },
+  { id: 'videos', label: 'Videos', icon: Video },
+  { id: 'media', label: 'Media Library', icon: Image },
+  { id: 'users', label: 'Users', icon: Users },
+  { id: 'settings', label: 'Settings', icon: Settings },
+];
+
+const mediaTabs: MediaSubTab[] = [
+  { id: 'all', label: 'All' },
+  { id: 'images', label: 'Images', icon: Image },
+  { id: 'videos', label: 'Videos', icon: Video },
+];
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'templates' | 'videos' | 'media' | 'users' | 'settings'>('templates');
@@ -306,14 +320,7 @@ const AdminDashboard: React.FC = () => {
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="border-b border-gray-100">
             <nav className="flex space-x-0">
-              {[
-                { id: 'templates', label: 'Templates', icon: FileSpreadsheet },
-                { id: 'videos', label: 'Videos', icon: Video },
-                { id: 'media', label: 'Media Library', icon: Image },
-                { id: 'users', label: 'Users', icon: Users },
-                { id: 'settings', label: 'Settings', icon: Settings },
-              ] as MainTab[]
-              .map((tab) => {
+              {mainTabs.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
                 return (
@@ -532,12 +539,7 @@ const AdminDashboard: React.FC = () => {
                     />
                   </div>
                   <div className="flex gap-2">
-                    {[
-                      { id: 'all', label: 'All' },
-                      { id: 'images', label: 'Images', icon: Image },
-                      { id: 'videos', label: 'Videos', icon: Video },
-                    ] as MediaSubTab[]
-                    .map((tab) => {
+                    {mediaTabs.map((tab) => {
                       const Icon = tab.icon;
                       const isActive = mediaSubTab === tab.id;
                       return (

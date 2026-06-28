@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Filter } from 'lucide-react';
 import TemplateCard from '../components/templates/TemplateCard';
-import { useData } from '../context/DataContext';
+import { useData } from '../hooks/useData';
 
 const categoriesList = ['All', 'Finance', 'Student', 'Personal', 'Business', 'Dashboard', 'Inventory', 'HR', 'Sales', 'Productivity', 'Project Management'];
 

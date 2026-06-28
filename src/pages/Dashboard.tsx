@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FileSpreadsheet, PlayCircle, BookOpen } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
-import { useData } from '../context/DataContext';
+import { useAuth } from '../hooks/useAuth';
+import { useData } from '../hooks/useData';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();

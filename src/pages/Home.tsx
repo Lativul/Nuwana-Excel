@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FileSpreadsheet, Video, BookOpen, ArrowRight, CheckCircle, DollarSign, GraduationCap, Briefcase, BarChart3, Package, CheckSquare } from 'lucide-react';
 import TemplateCard from '../components/templates/TemplateCard';
 import MediaCard from '../components/media/MediaCard';
-import { useData } from '../context/DataContext';
+import { useData } from '../hooks/useData';
 
 const Home: React.FC = () => {
   const { getPublishedTemplates, getPublishedVideos, getPublishedMedia } = useData();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PlayCircle } from 'lucide-react';
-import { useData } from '../context/DataContext';
+import { useData } from '../hooks/useData';
 
 const Videos: React.FC = () => {
   const { getPublishedVideos } = useData();

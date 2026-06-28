@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, User, Mail, Lock } from 'lucide-react';
-import { useAuth } from '../context/AuthProvider';
+import { useAuth } from '../hooks/useAuth';
 
 const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
