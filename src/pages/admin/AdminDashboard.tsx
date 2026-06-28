@@ -13,8 +13,27 @@ import {
   X,
   Search,
   CheckCircle2,
+  Edit,
 } from 'lucide-react';
-import { useData } from '../../context/DataContext';
+import { useData } from '../../context/DataProvider';
+import { MediaFile, Template, VideoCourse, VideoLesson } from '../../types';
+
+// Define proper types for our tab data
+type MainTab = {
+  id: 'templates' | 'videos' | 'media' | 'users' | 'settings';
+  label: string;
+  icon: React.FC<{ className?: string }>;
+};
+
+type MediaSubTab = {
+  id: 'all' | 'images' | 'videos';
+  label: string;
+  icon?: React.FC<{ className?: string }>;
+};
+
+// Define form types
+type TemplateForm = Omit<Template, 'id' | 'screenshots' | 'tutorialVideo' | 'published'>;
+type VideoForm = Omit<VideoCourse, 'id' | 'published'>;
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'templates' | 'videos' | 'media' | 'users' | 'settings'>('templates');
@@ -24,12 +43,12 @@ const AdminDashboard: React.FC = () => {
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const [previewFile, setPreviewFile] = useState<any>(null);
+  const [previewFile, setPreviewFile] = useState<MediaFile | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   
-  const [templateForm, setTemplateForm] = useState({
+  const [templateForm, setTemplateForm] = useState<TemplateForm>({
     title: '',
     description: '',
     category: 'Finance',
@@ -39,7 +58,7 @@ const AdminDashboard: React.FC = () => {
     features: ['Customizable', 'Easy to use', 'Professional design'],
   });
   
-  const [videoForm, setVideoForm] = useState({
+  const [videoForm, setVideoForm] = useState<VideoForm>({
     title: '',
     description: '',
     category: 'Excel Basics',
@@ -96,7 +115,7 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
-  const openPreview = (media: any) => {
+  const openPreview = (media: MediaFile) => {
     setPreviewFile(media);
     setIsPreviewModalOpen(true);
   };
@@ -118,13 +137,13 @@ const AdminDashboard: React.FC = () => {
       const fileSize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
       const previewUrl = URL.createObjectURL(file);
       
-      const mediaItem = {
+      const mediaItem: MediaFile = {
         id: Date.now() + index,
         name: file.name.replace(/\.[^/.]+$/, ''),
         type: isImage ? 'image' : 'video',
         format: fileExt,
         size: fileSize,
-        duration: isImage ? '00:00' : '00:30',
+        duration: isImage ? undefined : '00:30',
         url: previewUrl,
         thumbnail: isImage ? previewUrl : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop',
         category: 'Uploads',
@@ -293,13 +312,14 @@ const AdminDashboard: React.FC = () => {
                 { id: 'media', label: 'Media Library', icon: Image },
                 { id: 'users', label: 'Users', icon: Users },
                 { id: 'settings', label: 'Settings', icon: Settings },
-              ].map((tab) => {
+              ] as MainTab[]
+              .map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
                 return (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id as any)}
+                    onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center gap-2 px-6 py-4 font-medium transition-colors ${
                       isActive
                         ? 'text-primary border-b-2 border-primary bg-primary/5'
@@ -516,13 +536,14 @@ const AdminDashboard: React.FC = () => {
                       { id: 'all', label: 'All' },
                       { id: 'images', label: 'Images', icon: Image },
                       { id: 'videos', label: 'Videos', icon: Video },
-                    ].map((tab) => {
-                      const Icon = (tab as any).icon;
+                    ] as MediaSubTab[]
+                    .map((tab) => {
+                      const Icon = tab.icon;
                       const isActive = mediaSubTab === tab.id;
                       return (
                         <button
                           key={tab.id}
-                          onClick={() => setMediaSubTab(tab.id as any)}
+                          onClick={() => setMediaSubTab(tab.id)}
                           className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
                             isActive
                               ? 'text-white bg-primary'

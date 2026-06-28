@@ -1,53 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-// Interfaces first!
-interface Template {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  difficulty: string;
-  isPremium: boolean;
-  thumbnail: string;
-  screenshots: string[];
-  features: string[];
-  tutorialVideo: string | null;
-  published: boolean;
-}
-
-interface VideoLesson {
-  id: string;
-  title: string;
-  duration: string;
-  videoUrl: string;
-}
-
-interface VideoCourse {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  thumbnail: string;
-  duration: string;
-  lessons: VideoLesson[];
-  isPremium: boolean;
-  published: boolean;
-}
-
-interface MediaFile {
-  id: number | string;
-  name: string;
-  type: 'image' | 'video';
-  format: string;
-  size: string;
-  duration?: string;
-  url: string;
-  thumbnail: string;
-  category: string;
-  alt?: string;
-  published: boolean;
-  isNew?: boolean;
-}
+import { Template, VideoCourse, MediaFile } from '../types';
 
 // Initial Mock Data
 const initialTemplates: Template[] = [
@@ -88,7 +40,14 @@ interface DataContextType {
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
-export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+// Hook for using data context
+export const useData = () => {
+  const context = useContext(DataContext);
+  if (!context) throw new Error('useData must be used within a DataProvider');
+  return context;
+};
+
+const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [templates, setTemplates] = useState<Template[]>(initialTemplates);
   const [videoCourses, setVideoCourses] = useState<VideoCourse[]>(initialVideoCourses);
   const [mediaFiles, setMediaFiles] = useState<MediaFile[]>(initialMedia);
@@ -146,8 +105,4 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   );
 };
 
-export const useData = () => {
-  const context = useContext(DataContext);
-  if (!context) throw new Error('useData must be used within a DataProvider');
-  return context;
-};
+export default DataProvider;
