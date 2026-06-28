@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FileSpreadsheet, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import {  Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (

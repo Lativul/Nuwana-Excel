@@ -25,27 +25,27 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const login = async (email: string, password: string): Promise<void> => {
-    await new Promise(resolve => setTimeout(resolve, 800));
-    setUser({
-      id: '1',
-      name: 'John Doe',
-      email: email,
-      isPremium: false,
-      role: 'User',
-    });
-  };
+const login = async (email: string, _password: string): Promise<void> => {
+  await new Promise(resolve => setTimeout(resolve, 800));
+  setUser({
+    id: '1',
+    name: 'John Doe',
+    email,
+    isPremium: false,
+    role: 'User',
+  });
+};
 
-  const register = async (name: string, email: string, password: string): Promise<void> => {
-    await new Promise(resolve => setTimeout(resolve, 800));
-    setUser({
-      id: '1',
-      name: name,
-      email: email,
-      isPremium: false,
-      role: 'User',
-    });
-  };
+const register = async (name: string, email: string, _password: string): Promise<void> => {
+  await new Promise(resolve => setTimeout(resolve, 800));
+  setUser({
+    id: '1',
+    name,
+    email,
+    isPremium: false,
+    role: 'User',
+  });
+};
 
   const loginAsAdmin = async (): Promise<void> => {
     await new Promise(resolve => setTimeout(resolve, 500));
