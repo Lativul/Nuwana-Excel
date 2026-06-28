@@ -140,7 +140,7 @@ const AdminDashboard: React.FC = () => {
       const mediaItem: MediaFile = {
         id: Date.now() + index,
         name: file.name.replace(/\.[^/.]+$/, ''),
-        type: isImage ? 'image' : 'video',
+        type: isImage ? 'image' as const : 'video' as const,
         format: fileExt,
         size: fileSize,
         duration: isImage ? undefined : '00:30',
