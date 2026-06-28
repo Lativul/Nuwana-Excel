@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FileSpreadsheet, PlayCircle, BookOpen } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { templates, videos } from '../data/mockData';
+import { useData } from '../context/DataContext';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
+  const { templates, videoCourses } = useData();
 
   const recentTemplates = templates.slice(0, 3);
-  const recentVideos = videos.slice(0, 2);
+  const recentVideos = videoCourses.slice(0, 2);
 
   return (
     <div className="min-h-screen py-12">
@@ -38,7 +39,7 @@ const Dashboard: React.FC = () => {
                 <PlayCircle className="w-7 h-7 text-blue-600" />
               </div>
               <div>
-                <p className="text-3xl font-bold text-gray-900">{videos.length}</p>
+                <p className="text-3xl font-bold text-gray-900">{videoCourses.length}</p>
                 <p className="text-gray-600">Courses</p>
               </div>
             </div>

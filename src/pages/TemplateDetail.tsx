@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Download, ArrowLeft, CheckCircle, PlayCircle } from 'lucide-react';
-import { templates } from '../data/mockData';
+import { useData } from '../context/DataContext';
 
 const TemplateDetail: React.FC = () => {
   const { id } = useParams();
+  const { templates } = useData();
   const template = templates.find((t) => t.id === id);
 
   if (!template) {
